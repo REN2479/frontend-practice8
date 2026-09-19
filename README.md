@@ -34,3 +34,18 @@ data/data.json  示例藏书数据
 - Bootstrap 5.3.3（CDN）：布局、导航与卡片组件
 - ECharts 5.5.0（CDN）：柱状图
 - 图书信息为手工整理的公开出版信息，仅作演示数据
+
+## integration/（课堂案例复现：迷你版校园信息中心）
+
+跟随实践指南八复现的整合骨架：
+
+```
+integration/
+├── index.html          统一入口（首页卡片、自习室查询、使用统计）
+├── css/style.css       自定义样式
+├── js/app.js           自习室楼层筛选交互与柱状图加载
+├── data/data.json      各自习室本周使用时长（演示数据）
+└── three-d/scene.html  校园三维导览（A-Frame 1.5.0，可从导航进入并返回）
+```
+
+运行方式与主作品相同（本地服务器）。其中三维页 three-d/scene.html 不读取本地文件，双击也可打开。

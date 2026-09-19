@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园三维导览</title>
+    <!-- A-Frame 1.5.0（CDN注明版本号） -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe-master.min.js"></script>
+    <style>
+        .top-bar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 99;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="../index.html">← 返回首页</a> ｜ 校园三维导览（鼠标拖动旋转，滚轮缩放）
+    </div>
+
+    <a-scene>
+        <a-sky color="#bfe3ff"></a-sky>
+        <!-- 草地 -->
+        <a-plane rotation="-90 0 0" width="40" height="40" color="#8fce7f"></a-plane>
+
+        <!-- 图书馆 -->
+        <a-box position="-6 1.5 -6" width="4" height="3" depth="3" color="#4cc3d9"></a-box>
+        <a-text value="图书馆" position="-6 3.6 -5.9" align="center" color="#333" width="10"></a-text>
+
+        <!-- 教学楼 -->
+        <a-box position="6 2.5 -6" width="3" height="5" depth="3" color="#ef2d5e"></a-box>
+        <a-text value="教学楼" position="6 5.6 -5.9" align="center" color="#333" width="10"></a-text>
+
+        <!-- 体育馆 -->
+        <a-cylinder position="0 1.5 -12" radius="2.5" height="3" color="#7bc8a4"></a-cylinder>
+        <a-text value="体育馆" position="0 3.6 -12" align="center" color="#333" width="10"></a-text>
+
+        <!-- 校门 -->
+        <a-box position="-2 1 2" width="1" height="2" depth="0.4" color="#ffb400"></a-box>
+        <a-box position="2 1 2" width="1" height="2" depth="0.4" color="#ffb400"></a-box>
+        <a-text value="校门" position="0 2.5 1.9" align="center" color="#333" width="8"></a-text>
+
+        <a-camera position="0 1.6 8"></a-camera>
+    </a-scene>
+</body>
+</html>
