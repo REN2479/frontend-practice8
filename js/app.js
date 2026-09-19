@@ -82,33 +82,52 @@ document.querySelectorAll('#main-nav .nav-link').forEach(link => {
 render();
 
 // ============ 统计模块（整合课堂六的可视化成果） ============
+// 内置同款数据：直接双击打开时浏览器限制fetch读取本地文件，回退使用
+const fallbackData = [
+    { name: '呐喊', author: '鲁迅', year: 1923 },
+    { name: '小王子', author: '圣埃克苏佩里', year: 1943 },
+    { name: '围城', author: '钱钟书', year: 1947 },
+    { name: '百年孤独', author: '加西亚·马尔克斯', year: 1967 },
+    { name: '平凡的世界', author: '路遥', year: 1986 },
+    { name: '活着', author: '余华', year: 1993 },
+    { name: '白夜行', author: '东野圭吾', year: 1999 },
+    { name: '三体', author: '刘慈欣', year: 2008 },
+    { name: '解忧杂货店', author: '东野圭吾', year: 2012 },
+    { name: '人类简史', author: '尤瓦尔·赫拉利', year: 2012 }
+];
+
 async function loadChart() {
     const chartTip = document.querySelector('#chart-tip');
+    let list;
     try {
         const res = await fetch('data/data.json');
         if (!res.ok) throw new Error('数据文件不存在');
-        const list = await res.json();
-        if (!Array.isArray(list) || list.length === 0) {
-            chartTip.textContent = '暂无藏书数据';
-            return;
-        }
-        // 按年代分组统计
-        const counts = {};
-        list.forEach(b => {
-            const decade = Math.floor(b.year / 10) * 10 + '年代';
-            counts[decade] = (counts[decade] || 0) + 1;
-        });
-        const chart = echarts.init(document.querySelector('#chart'));
-        chart.setOption({
-            title: { text: '各年代藏书量（单位：本）' },
-            tooltip: {},
-            xAxis: { data: Object.keys(counts) },
-            yAxis: {},
-            series: [{ type: 'bar', data: Object.values(counts) }]
-        });
+        list = await res.json();
     } catch (e) {
-        chartTip.textContent = '数据加载失败，请检查网络或数据文件';
+        // 读取失败（如双击打开受浏览器限制）时回退到内置数据，页面不空白
+        list = fallbackData;
+        chartTip.className = 'text-muted';
+        chartTip.textContent = '未能读取 data/data.json，当前显示内置演示数据（用本地服务器打开可读取完整数据）';
     }
+    if (!Array.isArray(list) || list.length === 0) {
+        chartTip.className = 'text-danger';
+        chartTip.textContent = '暂无藏书数据';
+        return;
+    }
+    // 按年代分组统计
+    const counts = {};
+    list.forEach(b => {
+        const decade = Math.floor(b.year / 10) * 10 + '年代';
+        counts[decade] = (counts[decade] || 0) + 1;
+    });
+    const chart = echarts.init(document.querySelector('#chart'));
+    chart.setOption({
+        title: { text: '各年代藏书量（单位：本）' },
+        tooltip: {},
+        xAxis: { data: Object.keys(counts) },
+        yAxis: {},
+        series: [{ type: 'bar', data: Object.values(counts) }]
+    });
 }
 
 loadChart();

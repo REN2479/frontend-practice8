@@ -12,7 +12,8 @@
 
 ## 运行方法
 
-由于浏览器安全限制，直接双击 index.html 无法用 fetch 读取本地 JSON 文件，需要通过本地服务器运行：
+双击 index.html 即可浏览大部分功能，此时统计图表自动使用内置演示数据。
+若要读取 data/data.json 完整数据（浏览器安全限制，双击打开时 fetch 无法读取本地文件），请通过本地服务器运行：
 
 ```bash
 python -m http.server 8000
