@@ -1,0 +1,15 @@
+/* 自定义样式：在Bootstrap之后引入，可覆盖默认样式 */
+body {
+    font-family: sans-serif;
+}
+
+.room-item {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+section {
+    scroll-margin-top: 70px; /* 锚点跳转时不被导航栏遮挡 */
+}
