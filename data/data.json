@@ -1,0 +1,12 @@
+[
+    { "name": "呐喊", "author": "鲁迅", "year": 1923 },
+    { "name": "小王子", "author": "圣埃克苏佩里", "year": 1943 },
+    { "name": "围城", "author": "钱钟书", "year": 1947 },
+    { "name": "百年孤独", "author": "加西亚·马尔克斯", "year": 1967 },
+    { "name": "平凡的世界", "author": "路遥", "year": 1986 },
+    { "name": "活着", "author": "余华", "year": 1993 },
+    { "name": "白夜行", "author": "东野圭吾", "year": 1999 },
+    { "name": "三体", "author": "刘慈欣", "year": 2008 },
+    { "name": "解忧杂货店", "author": "东野圭吾", "year": 2012 },
+    { "name": "人类简史", "author": "尤瓦尔·赫拉利", "year": 2012 }
+]
